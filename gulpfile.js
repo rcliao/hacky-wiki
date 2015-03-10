@@ -10,7 +10,8 @@ var uglify = require('gulp-uglify');
 gulp.task('javascript', function() {
 	return gulp.src('src/typescripts/**/*.ts')
 		.pipe(ts({
-			module: 'commonjs'
+			module: 'commonjs',
+			target: 'ES5'
 		}))
 		.pipe(gulp.dest('src/javascripts'))
 		.pipe(webpack({
