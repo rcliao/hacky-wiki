@@ -3,6 +3,12 @@ var gulp = require('gulp');
 var ts = require('gulp-typescript');
 var webpack = require('gulp-webpack');
 var uglify = require('gulp-uglify');
+var jade = require('gulp-jade');
+var concat = require('gulp-concat');
+
+gulp.task('build', ['javascript', 'html'], function() {
+	// TODO: implement anything necessary
+});
 
 /**
  * Simply compile the TypeScript to the javascript
@@ -13,6 +19,7 @@ gulp.task('javascript', function() {
 			module: 'commonjs',
 			target: 'ES5'
 		}))
+		.pipe(concat('all.js'))
 		.pipe(gulp.dest('src/javascripts'))
 		.pipe(webpack({
 			output: {
@@ -20,12 +27,18 @@ gulp.task('javascript', function() {
 				module: 'umd'
 			}
 		}))
-		.pipe(uglify())
 		.pipe(gulp.dest('public/javascripts'));
 });
 
-gulp.task('build', ['javascript'], function() {
-	// TODO: implement anything necessary
+gulp.task('html', function() {
+	return gulp.src('src/views/**/*.jade')
+		.pipe(jade())
+		.pipe(gulp.dest('public'));
+});
+
+gulp.task('watch', function() {
+	// TODO: implement incremental build as performance of build grows
+	gulp.watch('src/**/*', ['build']);
 });
 
 /**

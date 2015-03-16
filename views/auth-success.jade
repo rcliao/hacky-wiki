@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  p.
+    Welcome #[=user.displayName]
+  script.
+    (function() {
+      'use strict';
+
+      // note that opener is the window object of what open this window
+      window.opener.sessionStorage
+        .setItem(
+          'user',
+          '(#[!=JSON.stringify(user)]'
+        );
+
+      window.close();
+    })();

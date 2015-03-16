@@ -24,5 +24,11 @@ public/
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
 node_modules
 
+# bower dependencies
+src/libs
+
 # Users Environment Variables
 .lock-wscript
+
+# settings
+config.js
