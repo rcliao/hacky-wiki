@@ -5,10 +5,9 @@ module hacky.wiki {
 
 	export class InitAuthencationCallback {
 		public static $inject = [
-			'$window'
 		];
 
-		constructor(private $window) {
+		constructor() {
 
 		}
 	}

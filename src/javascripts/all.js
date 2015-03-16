@@ -30,11 +30,9 @@ var hacky;
     (function (wiki) {
         'use strict';
         var InitAuthencationCallback = (function () {
-            function InitAuthencationCallback($window) {
-                this.$window = $window;
+            function InitAuthencationCallback() {
             }
             InitAuthencationCallback.$inject = [
-                '$window'
             ];
             return InitAuthencationCallback;
         })();

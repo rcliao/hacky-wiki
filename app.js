@@ -13,18 +13,10 @@ var GitHubStrategy = require('passport-github').Strategy;
 var routes = require('./routes/index');
 var config = require('./config.js');
 
-var mysqlConnection = mysql.createConnection(
-  {
-    'host': 'localhost',
-    'user': 'root',
-    'password': '',
-    'database': 'hacky_wiki',
-    'users_table': 'users'
-  }
-);
+var mysqlConnection = mysql.createConnection(config.database);
 
-var GITHUB_CLIENT_ID = config.GITHUB_CLIENT_ID;
-var GITHUB_CLIENT_SECRET = config.GITHUB_CLIENT_SECRET;
+var GITHUB_CLIENT_ID = config.github.GITHUB_CLIENT_ID;
+var GITHUB_CLIENT_SECRET = config.github.GITHUB_CLIENT_SECRET;
 
 var app = express();
 
@@ -120,13 +112,7 @@ app.use(passport.session());
 app.use(
   connection(
     mysql,
-    {
-      host: 'localhost',
-      user: 'root',
-      password: '',
-      port: 3306,
-      database: 'hacky_wiki'
-    }
+    config.database
   )
 );
 
