@@ -14,7 +14,7 @@ module hacky.wiki {
 	require('../libs/angular-ui-router/release/angular-ui-router');
 
 	angular.module('hacky.wiki', ['ngMaterial', 'ui.router'])
-		.run(InitAuthenticationCallback)
+		.run(InitAuthencationCallback)
 		.config(RouterConfig)
 		.controller('IndexCtrl', IndexCtrl);
 

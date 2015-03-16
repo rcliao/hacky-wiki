@@ -23,6 +23,25 @@ var hacky;
     })(wiki = hacky.wiki || (hacky.wiki = {}));
 })(hacky || (hacky = {}));
 
+/// <reference path='../_all.ts' />
+var hacky;
+(function (hacky) {
+    var wiki;
+    (function (wiki) {
+        'use strict';
+        var InitAuthencationCallback = (function () {
+            function InitAuthencationCallback($window) {
+                this.$window = $window;
+            }
+            InitAuthencationCallback.$inject = [
+                '$window'
+            ];
+            return InitAuthencationCallback;
+        })();
+        wiki.InitAuthencationCallback = InitAuthencationCallback;
+    })(wiki = hacky.wiki || (hacky.wiki = {}));
+})(hacky || (hacky = {}));
+
 /// <reference path='../../_all.ts' />
 var hacky;
 (function (hacky) {
@@ -58,30 +77,16 @@ var hacky;
         require('../libs/angular-aria/angular-aria');
         require('../libs/angular-material/angular-material');
         require('../libs/angular-ui-router/release/angular-ui-router');
-        angular.module('hacky.wiki', ['ngMaterial', 'ui.router']).config(wiki.RouterConfig).controller('IndexCtrl', wiki.IndexCtrl);
+        angular.module('hacky.wiki', ['ngMaterial', 'ui.router']).run(wiki.InitAuthencationCallback).config(wiki.RouterConfig).controller('IndexCtrl', wiki.IndexCtrl);
         angular.bootstrap(document, ['hacky.wiki']);
     })(wiki = hacky.wiki || (hacky.wiki = {}));
 })(hacky || (hacky = {}));
 
 /// <reference path="../libs/types/angularjs/angular.d.ts" />
 /// <reference path="configs/routerConfig.ts" />
+/// <reference path="configs/initAuthenticationCallback.ts" />
 /// <reference path="controllers/index/indexCtrl.ts" />
 /// <reference path="hacky.wiki.module.ts" />
-
-/// <reference path='../_all.ts' />
-var hacky;
-(function (hacky) {
-    var wiki;
-    (function (wiki) {
-        'use strict';
-        var InitAuthencationCallback = (function () {
-            function InitAuthencationCallback() {
-            }
-            return InitAuthencationCallback;
-        })();
-        wiki.InitAuthencationCallback = InitAuthencationCallback;
-    })(wiki = hacky.wiki || (hacky.wiki = {}));
-})(hacky || (hacky = {}));
 
 /// <reference path='../_all.ts' />
 var hacky;
